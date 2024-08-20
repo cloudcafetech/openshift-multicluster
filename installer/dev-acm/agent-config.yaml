@@ -1,85 +1,87 @@
----
 apiVersion: v1alpha1
 kind: AgentConfig
 metadata:
-  name: dev-acm
-rendezvousIP: 10.30.30.100
+  name: cloud-cafe
+rendezvousIP: 192.168.29.207
 hosts:
-  - hostname: ocp-acm-0 #51200 Memory # 12CPUs
+  - hostname: ocp-master-1 #51200 Memory # 12CPUs
     interfaces:
       - name: ens18
-        macAddress: 52:50:56:11:22:11
+        macAddress: BC:24:11:11:22:11
     networkConfig:
       interfaces:
         - name: ens18
           type: ethernet
           state: up
-          mac-address: 52:50:56:11:22:11
+          mac-address: BC:24:11:11:22:11
           ipv4:
             enabled: true
             address:
-              - ip: 10.30.30.100
+              - ip: 192.168.29.207
                 prefix-length: 23
             dhcp: false
       dns-resolver:
         config:
           server:
-            - 10.30.0.1
+            - 192.168.29.4
+            - 192.168.29.1
       routes:
         config:
           - destination: 0.0.0.0/0
-            next-hop-address: 10.30.30.1
+            next-hop-address: 192.168.29.1
             next-hop-interface: ens18
             table-id: 254
-  - hostname: ocp-acm-1
+  - hostname: ocp-master-2
     interfaces:
       - name: ens18
-        macAddress: 52:50:56:11:22:22
+        macAddress: BC:24:11:11:22:22
     networkConfig:
       interfaces:
         - name: ens18
           type: ethernet
           state: up
-          mac-address: 52:50:56:11:22:22
+          mac-address: BC:24:11:11:22:22
           ipv4:
             enabled: true
             address:
-              - ip: 10.30.30.101
+              - ip: 192.168.29.208
                 prefix-length: 23
             dhcp: false
       dns-resolver:
         config:
           server:
-            - 10.30.0.1
+            - 192.168.29.4
+            - 192.168.29.1
       routes:
         config:
           - destination: 0.0.0.0/0
-            next-hop-address: 10.30.30.1
+            next-hop-address: 192.168.29.1
             next-hop-interface: ens18
             table-id: 254
-  - hostname: ocp-acm-2
+  - hostname: ocp-master-3
     interfaces:
       - name: ens18
-        macAddress: 52:50:56:11:22:33
+        macAddress: BC:24:11:11:22:33
     networkConfig:
       interfaces:
         - name: ens18
           type: ethernet
           state: up
-          mac-address: 52:50:56:11:22:33
+          mac-address: BC:24:11:11:22:33
           ipv4:
             enabled: true
             address:
-              - ip: 10.30.30.102
+              - ip: 192.168.29.209
                 prefix-length: 23
             dhcp: false
       dns-resolver:
         config:
           server:
-            - 10.30.0.1
+            - 192.168.29.4
+            - 192.168.29.1
       routes:
         config:
           - destination: 0.0.0.0/0
-            next-hop-address: 10.30.30.1
+            next-hop-address: 192.168.29.1
             next-hop-interface: ens18
             table-id: 254
